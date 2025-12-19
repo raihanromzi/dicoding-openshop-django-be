@@ -34,8 +34,8 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     def get__links(self, obj):
         request = self.context.get('request')
 
-        list_url = reverse('products-list', request=request)
-        detail_url = reverse('products-detail', kwargs={'pk': obj.pk},
+        list_url = reverse('product-list', request=request)
+        detail_url = reverse('product-detail', kwargs={'pk': obj.pk},
                              request=request)
 
         return [

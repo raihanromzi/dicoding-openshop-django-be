@@ -120,8 +120,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Rest Framework Renderer
 # https://www.django-rest-framework.org/api-guide/renderers/
-REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': [
-        'open_shop.renderers.DataWrapperJSONRenderer'
-    ]
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_RENDERER_CLASSES': [
+#         'open_shop.renderers.DataWrapperJSONRenderer'
+#     ]
+# }

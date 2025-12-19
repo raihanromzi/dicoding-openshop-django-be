@@ -1,6 +1,7 @@
 from rest_framework.renderers import JSONRenderer
 
 
+# Wrap Response with "products" globally
 class DataWrapperJSONRenderer(JSONRenderer):
     def render(self, data, accepted_media_type=None, renderer_context=None):
         # response = value_if_true IF condition ELSE value_if_false
