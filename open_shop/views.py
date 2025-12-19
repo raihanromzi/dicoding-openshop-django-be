@@ -1,7 +1,9 @@
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
+
+from open_shop.models import Product
+from open_shop.serializers import ProductSerializer
 
 
-class HelloWorld(APIView):
-    def get(self, request):
-        return Response({"message": "Hello World"})
+class ProductViewSet(ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer

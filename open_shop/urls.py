@@ -1,7 +1,8 @@
-from django.urls import path
+from rest_framework.routers import SimpleRouter
 
-from open_shop import views
+from open_shop.views import ProductViewSet
 
-urlpatterns = [
-    path('', views.HelloWorld.as_view())
-]
+router = SimpleRouter()
+router.register(r'products', ProductViewSet, basename='products')
+
+urlpatterns = router.urls

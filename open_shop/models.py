@@ -28,6 +28,11 @@ class Product(models.Model):
         "blank": "Product location is required.",
         "max_length": "Location must not exceed 50 characters."
     })
+    discount = models.IntegerField(
+        error_messages={
+            "invalid": "Stock must be zero or greater."
+        }
+    )
     category = models.CharField(max_length=50, error_messages={
         "blank": "Category is required.",
         "max_length": "Category must not exceed 50 characters."
@@ -40,6 +45,7 @@ class Product(models.Model):
         "invalid": "Picture must be a valid URL.",
         "max_length": "Picture URL must not exceed 500 characters."
     })
+    is_delete = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

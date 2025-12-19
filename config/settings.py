@@ -117,3 +117,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Rest Framework Renderer
+# https://www.django-rest-framework.org/api-guide/renderers/
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'open_shop.renderers.DataWrapperJSONRenderer'
+    ]
+}

@@ -13,22 +13,29 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
                   'location', 'discount', 'category', 'stock', 'is_available',
                   'picture', 'is_delete', '_links']
 
+    def validate_value(self, value, field):
+        if value < 0:
+            raise serializers.ValidationError(
+                f'{field} must be greater than zero.')
+        return value
+
     def validate_price(self, value):
         if value <= 0:
             raise serializers.ValidationError(
-                "Price must be greater than zero.")
+                'Price must be greater than zero.')
         return value
 
+    def validate_discount(self, value):
+        return self.validate_value(value, 'Discount')
+
     def validate_stock(self, value):
-        if value < 0:
-            raise serializers.ValidationError("Stock must be zero or greater.")
-        return value
+        return self.validate_value(value, 'Stock')
 
     def get__links(self, obj):
         request = self.context.get('request')
 
-        list_url = reverse('', request=request)
-        detail_url = reverse('', kwargs={'pk': obj.pk},
+        list_url = reverse('products-list', request=request)
+        detail_url = reverse('products-detail', kwargs={'pk': obj.pk},
                              request=request)
 
         return [
